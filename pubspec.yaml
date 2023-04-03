@@ -1,7 +1,8 @@
 name: circular_badge_avatar
-description: A useful flutter package to make a cicular avater with with badge.
-version: 0.0.1
-homepage: https://github.com/muktabd/circular_badge_avatar.git
+description: A useful flutter package to make a cicular avater with badge.
+version: 0.0.2
+repository: "https://github.com/muktabd/circular_badge_avatar.git"
+homepage: "https://github.com/muktabd/circular_badge_avatar"
 
 environment:
   sdk: '>=2.19.5 <3.0.0'
@@ -10,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker: ^0.8.7+1
 
 dev_dependencies:
   flutter_test:

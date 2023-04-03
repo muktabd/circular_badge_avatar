@@ -1,25 +1,25 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class CircularBadgeAvatar extends StatelessWidget {
-  final String centeralText;
-  final Color bgColor;
-  final Color borderColor;
-  final Color textColor;
-  final IconData? icon;
-  final Color? icongBg;
-  final Color? iconColor;
-
-  const CircularBadgeAvatar({
+class StaticBadgeAvatar extends StatelessWidget {
+  const StaticBadgeAvatar({
     super.key,
     required this.centeralText,
     required this.bgColor,
     required this.borderColor,
     required this.textColor,
-    this.icon,
-    this.icongBg,
-    this.iconColor,
+    required this.icon,
+    required this.icongBg,
+    required this.iconColor,
   });
+
+  final String centeralText;
+  final Color bgColor;
+  final Color borderColor;
+  final Color textColor;
+  final IconData icon;
+  final Color icongBg;
+  final Color iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +62,9 @@ class CircularBadgeAvatar extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: icongBg,
                     shape: BoxShape.circle,
-                    border: icon != null
-                        ? Border.all(
-                            color: Colors.grey,
-                          )
-                        : null,
+                    border: Border.all(
+                      color: Colors.grey,
+                    ),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
