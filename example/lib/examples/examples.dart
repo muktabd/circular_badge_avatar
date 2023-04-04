@@ -94,6 +94,18 @@ class _ExampleScreenState extends State<ExampleScreen> {
                 },
               ),
             ),
+            const SizedBox(height: 20),
+            SizedBox(
+              height: 100,
+              child: NetworkImageBadgeAvatar(
+                imagePath: _image,
+                networkImage: "https://cdn.pixabay.com/photo/2012/12/27/19/40/chain-link-72864_960_720.jpg",
+                onPressed: () {
+                  log("Hello badge");
+                  _imageHandler(ImageSource.gallery);
+                },
+              ),
+            ),
           ],
         ),
       ),
