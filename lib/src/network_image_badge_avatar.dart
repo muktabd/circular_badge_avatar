@@ -11,7 +11,8 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
   final IconData? icon;
   final Color? icongBg;
   final Color? iconColor;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+  final VoidCallback? iconButtonOnPressed;
   final String? placeholderImage;
   final String? networkImage;
   final XFile? imagePath;
@@ -25,7 +26,8 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
     this.icon,
     this.icongBg,
     this.iconColor,
-    required this.onPressed,
+    this.onPressed,
+    this.iconButtonOnPressed,
     this.placeholderImage,
     this.networkImage,
     this.imagePath,
@@ -86,7 +88,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                 top: 0,
                 right: 0,
                 child: GestureDetector(
-                  onTap: onPressed,
+                  onTap: iconButtonOnPressed,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: icongBg ?? Colors.grey.shade200,

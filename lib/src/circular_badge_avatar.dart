@@ -2,23 +2,30 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CircularBadgeAvatar extends StatelessWidget {
-  final String centeralText;
-  final Color bgColor;
-  final Color borderColor;
-  final Color textColor;
+  final String? centeralText;
+  final Color? bgColor;
+  final Color? borderColor;
+  final Color? textColor;
   final IconData? icon;
   final Color? icongBg;
   final Color? iconColor;
+  final VoidCallback? iconOnPressed;
+  final String? placeholderImage;
+  final String? networkImage;
+  
 
   const CircularBadgeAvatar({
     super.key,
-    required this.centeralText,
-    required this.bgColor,
-    required this.borderColor,
-    required this.textColor,
+    this.centeralText,
+    this.bgColor,
+    this.borderColor,
+    this.textColor,
     this.icon,
     this.icongBg,
     this.iconColor,
+    this.iconOnPressed,
+    this.placeholderImage,
+    this.networkImage,
   });
 
   @override
@@ -37,7 +44,7 @@ class CircularBadgeAvatar extends StatelessWidget {
                   color: bgColor,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: borderColor,
+                    color: borderColor ?? Colors.blueGrey,
                     width: 1.5,
                   ),
                 ),
@@ -47,7 +54,7 @@ class CircularBadgeAvatar extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    centeralText,
+                    centeralText ?? "AI",
                     style: TextStyle(
                       fontSize: 24,
                       color: textColor,
@@ -58,22 +65,25 @@ class CircularBadgeAvatar extends StatelessWidget {
               Positioned(
                 top: 0,
                 right: 0,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: icongBg,
-                    shape: BoxShape.circle,
-                    border: icon != null
-                        ? Border.all(
-                            color: Colors.grey,
-                          )
-                        : null,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Icon(
-                      icon,
-                      size: radius * 0.2,
-                      color: iconColor,
+                child: GestureDetector(
+                onTap: iconOnPressed,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: icongBg,
+                      shape: BoxShape.circle,
+                      border: icon != null
+                          ? Border.all(
+                              color: Colors.grey,
+                            )
+                          : null,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Icon(
+                        icon,
+                        size: radius * 0.2,
+                        color: iconColor,
+                      ),
                     ),
                   ),
                 ),
