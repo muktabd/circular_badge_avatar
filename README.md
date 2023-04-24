@@ -19,59 +19,44 @@ import 'package:circular_badge_avatar/circular_badge_avatar.dart';
 TO get a clear idea plese see at the example folder
 to `/example` folder.
 
-Here is an example how to use this widget in your code without badge icon
-```dart
-    CircularBadgeAvatar(
-        centeralText: "OPTIONAL",
-        textColor: Colors.white,
-        bgColor: Colors.red,
-        borderColor: Colors.blueGrey,
-        ),
-```
 
-Here is an example how to use this widget in your code when you want as static widget
-```dart
-    StaticBadgeAvatar(
-        centeralText: "STATIC",
-        icon: Icons.info_outline_rounded,
-        textColor: Colors.white,
-        iconColor: Colors.lightBlue.shade900,
-        icongBg: Colors.white,
-        bgColor: Colors.red,
-        borderColor: Colors.blueGrey,
-        ),
-```
 
 Here is an example how to use this widget in your code to show the info
 ```dart
-    InfoBadgeAvatar(
+    SizedBox(
+        height: 100,
+        child: CircularBadgeAvatar(
         centeralText: "AI",
-        icon: Icons.info_outline_rounded,
         textColor: Colors.white,
-        iconColor: Colors.lightBlue.shade900,
-        icongBg: Colors.white,
         bgColor: Colors.red,
         borderColor: Colors.blueGrey,
-        onPressed: () {
-            log("Hello badge");
-            /* ///if you want a custom test use this */
+        icon: Icons.info,
+        iconOnPressed: () {
+            /// if you want a custom test use this
             // var snackBar = SnackBar(content: Text('Hello, I am here'));
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('Hello, Your info is here!!')));
+            ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Hello, Your info is here!!'),
+            ),
+            );
         },
+        ),
     ),
 ```
 
-Here is an example how to use this widget when you want it to pick image and view
+Here is an example how to use this widget when you want it to pick image and view. To use this widget you need to add *image_picker* package.
 ```dart
-    ImageBadgeAvatar(
-    //replace your image picker variable
+    SizedBox(
+        height: 100,
+        child: NetworkImageBadgeAvatar(
         imagePath: _image,
-        onPressed: () {
+        networkImage:
+            "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
+        iconOnPressed: () {
             log("Hello badge");
-            // Call your image picker method
-            //_imageHandler(ImageSource.gallery);
+            _imageHandler(ImageSource.gallery);
         },
+        ),
     ),
 ```
 

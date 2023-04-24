@@ -70,7 +70,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                 borderColor: Colors.blueGrey,
                 icon: Icons.info,
                 iconOnPressed: () {
-                  /* ///if you want a custom test use this */
+                  /// if you want a custom test use this
                   // var snackBar = SnackBar(content: Text('Hello, I am here'));
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -86,8 +86,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
               child: NetworkImageBadgeAvatar(
                 imagePath: _image,
                 networkImage:
-                    "https://cdn.pixabay.com/photo/2012/12/27/19/40/chain-link-72864_960_720.jpg",
-                onPressed: () {
+                    "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
+                iconOnPressed: () {
                   log("Hello badge");
                   _imageHandler(ImageSource.gallery);
                 },
