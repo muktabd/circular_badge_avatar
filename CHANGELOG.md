@@ -1,6 +1,6 @@
-## 0.0.3
+## 0.0.4
 
 * TODO: Describe initial release.
 There are three addintional widgets added to use.
-## Main Changes in V0.0.3
-This is version some optional widgets are added & some properties become optional to use.
+## Main Changes in V0.0.4
+Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100.

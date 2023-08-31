@@ -15,6 +15,8 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
   final String? placeholderImage;
   final String? networkImage;
   final XFile? imagePath;
+  final double? iconPosition;
+
 
   const NetworkImageBadgeAvatar({
     super.key,
@@ -29,6 +31,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
     this.placeholderImage,
     this.networkImage,
     this.imagePath,
+    this.iconPosition,
   });
 
   @override
@@ -44,20 +47,26 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
             children: [
               if (imagePath != null)
                 Container(
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
+                decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
                       color: borderColor ?? Colors.blueGrey,
-                      width: 1.5,
+                      width: 2.0,
                     ),
                   ),
-                  clipBehavior: Clip.hardEdge,
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    child: Image.file(
-                      File(imagePath!.path),
-                      fit: BoxFit.cover,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      shape: BoxShape.circle,                    
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                    width: 180,
+                      child: Image.file(
+                        File(imagePath!.path),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 )
@@ -83,7 +92,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
 
               /// adjusted editable badge icon
               Positioned(
-                top: 0,
+                top: iconPosition ?? 85.0,
                 right: 0,
                 child: GestureDetector(
                   onTap: iconOnPressed,
