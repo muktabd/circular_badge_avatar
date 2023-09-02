@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+
+// [placeholder image] you just pass the asset name. For example : "assets/images/user_placeholder.png" or for string name use : Images.name. Else it will not show your image in placeholder.
+// By default we are showing one image from our root folder
 class NetworkImageBadgeAvatar extends StatelessWidget {
   final String? centeralText;
   final Color? bgColor;
@@ -90,7 +93,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                   ),
                 ),
 
-              /// adjusted editable badge icon
+              /// adjustable iconbutton [image picker icon button]
               Positioned(
                 top: iconPosition ?? 85.0,
                 right: 0,

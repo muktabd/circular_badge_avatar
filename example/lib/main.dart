@@ -1,6 +1,7 @@
 import 'dart:developer';
-import 'dart:io';
 import 'package:circular_badge_avatar/circular_badge_avatar.dart';
+import 'package:circular_badge_avatar/helper/image_picker_dialog.dart';
+import 'package:circular_badge_avatar/helper/bottomsheet_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -32,74 +33,8 @@ class ExampleScreen extends StatefulWidget {
 }
 
 class _ExampleScreenState extends State<ExampleScreen> {
-
   XFile? selectedImagePath;
   XFile? imageSource;
-
-  Future showPickerDialogue(BuildContext context) async {
-    ImagePicker picker = ImagePicker();
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          //title: Text(title ?? "Alert!"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: const Icon(
-                  Icons.camera_alt,
-                  //color: ColorRes.black,
-                ),
-                title: const Text("Take a picture"),
-                onTap: () async {
-                  selectedImagePath =
-                      await picker.pickImage(source: ImageSource.camera);
-                  if (selectedImagePath != null) {
-                    setState(() {
-                      selectedImagePath = XFile(selectedImagePath!.path);
-                    });
-                  } else {
-                    Navigator.of(context);
-                  }
-                },
-              ),
-              ListTile(
-                onTap: () async {
-                  selectedImagePath =
-                      await picker.pickImage(source: ImageSource.gallery);
-                  if (selectedImagePath != null) {
-                    setState(() {
-                      selectedImagePath = XFile(selectedImagePath!.path);
-                    });
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
-                leading: const Icon(
-                  Icons.photo,
-                  //color: ColorRes.black,
-                ),
-                title: const Text("Choose one from gallery"),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Container(
-                //color: Colors.green,
-                padding: const EdgeInsets.all(14),
-                child: Text("Cancel"),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,15 +68,40 @@ class _ExampleScreenState extends State<ExampleScreen> {
               ),
             ),
             const SizedBox(height: 20),
+            //
+
             SizedBox(
               height: 100,
               child: NetworkImageBadgeAvatar(
                 imagePath: selectedImagePath,
-                networkImage:
-                    "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
-                iconOnPressed: () {
+                iconPosition: 70,
+                networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
+                iconOnPressed: () async {
                   log("Hello badge");
-                  showPickerDialogue(context);
+
+                  // by default we're showing [BottomSheetImagePicker] helper class
+                  // if you don't want you can comment out the lines
+
+                  final file =  await showModalBottomSheet<XFile?>(
+                    context: context,
+                    builder: (context) {
+                    return const BottomSheetImagePicker();
+                  });
+
+                  // if you want to use image picker dialog then use [ImagePickerDialog] helper class
+                  // remove this comment out lines
+                  
+                  /* 
+                    final file = await showDialog<XFile>(
+                      context: context,
+                      builder: (context) {
+                        return const ImagePickerDialog();
+                    }); 
+                  */
+
+                  setState(() {
+                    selectedImagePath = file;
+                  });
                 },
               ),
             ),
