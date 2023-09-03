@@ -10,9 +10,7 @@ class CircularBadgeAvatar extends StatelessWidget {
   final Color? icongBg;
   final Color? iconColor;
   final VoidCallback? iconOnPressed;
-  final String? placeholderImage;
-  final String? networkImage;
-  
+  final String? assetImage;
 
   const CircularBadgeAvatar({
     super.key,
@@ -24,8 +22,7 @@ class CircularBadgeAvatar extends StatelessWidget {
     this.icongBg,
     this.iconColor,
     this.iconOnPressed,
-    this.placeholderImage,
-    this.networkImage,
+    this.assetImage,
   });
 
   @override
@@ -39,34 +36,69 @@ class CircularBadgeAvatar extends StatelessWidget {
             fit: StackFit.expand,
             alignment: Alignment.topRight,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: bgColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: borderColor ?? Colors.blueGrey,
-                    width: 1.5,
+              if (assetImage != null)
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: borderColor ?? Colors.blueGrey,
+                      width: 2.0,
+                    ),
                   ),
-                ),
-                padding: const EdgeInsets.all(8),
-                clipBehavior: Clip.hardEdge,
-                alignment: Alignment.center,
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    centeralText ?? "AI",
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: textColor,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: bgColor ?? const Color(0x00000000),
+                      shape: BoxShape.circle,
+                    ),
+                    //padding: const EdgeInsets.all(8),
+                    clipBehavior: Clip.hardEdge,
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: 180,
+                      child: Image.asset(
+                          assetImage ?? "assets/images/user_placeholder.png", 
+                          fit: BoxFit.cover,
+                          ),
+                                         
+                    ),
+                    /* child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Image.asset(
+                          assetImage ?? "assets/images/user_placeholder.png", 
+                          fit: BoxFit.cover,
+                          ),
+                    ), */
+                  ),
+                )
+              else
+                Container(
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: borderColor ?? Colors.blueGrey,
+                      width: 1.5,
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  clipBehavior: Clip.hardEdge,
+                  alignment: Alignment.center,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      centeralText ?? "AI",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: textColor,
+                      ),
                     ),
                   ),
                 ),
-              ),
               Positioned(
                 top: 0,
                 right: 0,
                 child: GestureDetector(
-                onTap: iconOnPressed,
+                  onTap: iconOnPressed,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: icongBg,

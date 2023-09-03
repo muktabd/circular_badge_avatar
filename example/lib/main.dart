@@ -48,6 +48,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
+            
+            // []
             SizedBox(
               height: 100,
               child: CircularBadgeAvatar(
@@ -68,8 +70,18 @@ class _ExampleScreenState extends State<ExampleScreen> {
               ),
             ),
             const SizedBox(height: 20),
+            
+            //if you want to pass a asset image [assetImage: pass your asset image]       
+            const SizedBox(
+              height: 100,
+              child: CircularBadgeAvatar(
+                 assetImage: "assets/images/asset_image.png",
+              ),
+            ),
+            const SizedBox(height: 20),
             //
 
+            // 
             SizedBox(
               height: 100,
               child: NetworkImageBadgeAvatar(
@@ -82,7 +94,6 @@ class _ExampleScreenState extends State<ExampleScreen> {
 
                   // by default we're showing [BottomSheetImagePicker] helper class
                   // if you don't want you can comment out the lines
-
                   final file =  await showModalBottomSheet<XFile?>(
                     context: context,
                     builder: (context) {
@@ -91,7 +102,6 @@ class _ExampleScreenState extends State<ExampleScreen> {
 
                   // if you want to use image picker dialog then use [ImagePickerDialog] helper class
                   // remove this comment out lines
-                  
                   /* 
                     final file = await showDialog<XFile>(
                       context: context,
@@ -103,9 +113,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   setState(() {
                     //imageSource = file;
                     selectedImagePath =  file!.path;
-
-                     log("Seding a string => $selectedImagePath");
-                     log("Seding a XFile => ${imageSource?.path}");
+                    log("Seding a string => $selectedImagePath");
+                    log("Seding a XFile => ${imageSource?.path}");
                   });
                 },
               ),
