@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 // [placeholder image] you just pass the asset name. For example : "assets/images/user_placeholder.png" or for string name use : Images.name. Else it will not show your image in placeholder.
 // By default we are showing one image from our root folder
 class NetworkImageBadgeAvatar extends StatelessWidget {
@@ -20,7 +19,6 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
   final XFile? imagePath;
   final String? imageString;
   final double? iconPosition;
-
 
   const NetworkImageBadgeAvatar({
     super.key,
@@ -50,9 +48,9 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
             fit: StackFit.expand,
             alignment: Alignment.topRight,
             children: [
-              if (imagePath != null)
+              if (imagePath != null || imageString != null)             
                 Container(
-                decoration: BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
                       color: borderColor ?? Colors.blueGrey,
@@ -62,22 +60,21 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                   child: Container(
                     decoration: const BoxDecoration(
                       color: Colors.transparent,
-                      shape: BoxShape.circle,                    
+                      shape: BoxShape.circle,
                     ),
                     clipBehavior: Clip.hardEdge,
                     alignment: Alignment.center,
                     child: SizedBox(
-                    width: 180,
+                      width: 180,
                       child: Image.file(
-                        imagePath?.path != null 
-                        ? File(imagePath!.path)
-                        : File(imageString!),
-
+                        imagePath?.path != null
+                            ? File(imagePath!.path)
+                            : File(imageString!),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                )
+                )                           
               else
                 Container(
                   decoration: BoxDecoration(
@@ -92,12 +89,14 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                   clipBehavior: Clip.hardEdge,
                   alignment: Alignment.center,
                   child: FadeInImage.assetNetwork(
-                    placeholder: placeholderImage ?? "assets/images/user_placeholder.png",
-                    image: networkImage ?? 'https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png',
+                    placeholder: placeholderImage ??
+                        "assets/images/user_placeholder.png",
+                    image: networkImage ??
+                        'https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png',
                     fit: BoxFit.cover,
                   ),
                 ),
-
+                            
               /// adjustable iconbutton [image picker icon button]
               Positioned(
                 top: iconPosition ?? 85.0,

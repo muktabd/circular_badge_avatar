@@ -101,7 +101,11 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   */
 
                   setState(() {
-                    imageSource = file;
+                    //imageSource = file;
+                    selectedImagePath =  file!.path;
+
+                     log("Seding a string => $selectedImagePath");
+                     log("Seding a XFile => ${imageSource?.path}");
                   });
                 },
               ),
