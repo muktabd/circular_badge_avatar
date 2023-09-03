@@ -18,6 +18,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
   final String? placeholderImage;
   final String? networkImage;
   final XFile? imagePath;
+  final String? imageString;
   final double? iconPosition;
 
 
@@ -34,6 +35,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
     this.placeholderImage,
     this.networkImage,
     this.imagePath,
+    this.imageString,
     this.iconPosition,
   });
 
@@ -67,7 +69,10 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                     child: SizedBox(
                     width: 180,
                       child: Image.file(
-                        File(imagePath!.path),
+                        imagePath?.path != null 
+                        ? File(imagePath!.path)
+                        : File(imageString!),
+
                         fit: BoxFit.cover,
                       ),
                     ),

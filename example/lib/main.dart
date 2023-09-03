@@ -33,7 +33,7 @@ class ExampleScreen extends StatefulWidget {
 }
 
 class _ExampleScreenState extends State<ExampleScreen> {
-  XFile? selectedImagePath;
+  String? selectedImagePath;
   XFile? imageSource;
 
   @override
@@ -73,7 +73,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
             SizedBox(
               height: 100,
               child: NetworkImageBadgeAvatar(
-                imagePath: selectedImagePath,
+                imageString: selectedImagePath,
+                imagePath: imageSource,
                 iconPosition: 70,
                 networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
                 iconOnPressed: () async {
@@ -100,7 +101,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   */
 
                   setState(() {
-                    selectedImagePath = file;
+                    imageSource = file;
                   });
                 },
               ),
