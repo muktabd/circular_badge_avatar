@@ -37,7 +37,7 @@ TO get a clear idea plese see at the example folder
 to `/example` folder.
 
 ## Sample output
-![sample](https://github.com/muktabd/circular_badge_avatar/assets/gif/example.gif?raw=true)
+![sample](https://github.com/muktabd/circular_badge_avatar/blob/main/assets/gif/example.gif?raw=true)
 
 
 ## CircularBadgeAvatar
