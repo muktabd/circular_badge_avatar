@@ -36,7 +36,12 @@ import 'package:circular_badge_avatar/helper/bottomsheet_image_picker.dart';
 TO get a clear idea plese see at the example folder
 to `/example` folder.
 
+## Sample output
+![sample](https://github.com/muktabd/circular_badge_avatar/assets/gif/example.gif?raw=true)
 
+
+## CircularBadgeAvatar
+This widget allow you to do everything you want to with circular badge avater with Color, Text or using Asset image. 
 
 Here is an example how to use this widget in your code to show the info. You able to customize anything from this widget.
 ```dart
@@ -61,6 +66,21 @@ Here is an example how to use this widget in your code to show the info. You abl
     ),
 ```
 
+If you want to use a static image from your asset then use the *CircularBadgeAvatar* 
+```dart
+//if you want to pass a asset image [assetImage: pass your asset image]       
+    const SizedBox(
+        height: 100,
+        child: CircularBadgeAvatar(
+            assetImage: "assets/images/asset_image.png", // your asset image will be here
+        ),
+    ),
+    const SizedBox(height: 20),
+    //
+```
+## NetworkImageBadgeAvatar
+To handle all kind of network image from HTTP or Firebase image path you can view from here and also able to update the image to any kind of databas
+
 Here is an example how to use this widget when you want it to pick image and view. To use this widget you need to add *image_picker* package.
 ```dart
     SizedBox(
@@ -68,7 +88,7 @@ Here is an example how to use this widget when you want it to pick image and vie
         child: NetworkImageBadgeAvatar(
         imagePath: selectedImagePath,
         iconPosition: 70,
-        networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
+        networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png", // replace your http image url
         iconOnPressed: () async {
             log("Hello badge");
 

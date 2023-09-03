@@ -75,7 +75,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
             const SizedBox(
               height: 100,
               child: CircularBadgeAvatar(
-                 assetImage: "assets/images/asset_image.png",
+                 assetImage: "assets/images/asset_image.png", // your asset image will be here
               ),
             ),
             const SizedBox(height: 20),
@@ -88,7 +88,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                 imageString: selectedImagePath,
                 imagePath: imageSource,
                 iconPosition: 70,
-                networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png",
+                networkImage: "https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png", // replace your http image url 
                 iconOnPressed: () async {
                   log("Hello badge");
 

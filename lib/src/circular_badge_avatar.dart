@@ -50,7 +50,6 @@ class CircularBadgeAvatar extends StatelessWidget {
                       color: bgColor ?? const Color(0x00000000),
                       shape: BoxShape.circle,
                     ),
-                    //padding: const EdgeInsets.all(8),
                     clipBehavior: Clip.hardEdge,
                     alignment: Alignment.center,
                     child: SizedBox(
@@ -61,13 +60,6 @@ class CircularBadgeAvatar extends StatelessWidget {
                           ),
                                          
                     ),
-                    /* child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Image.asset(
-                          assetImage ?? "assets/images/user_placeholder.png", 
-                          fit: BoxFit.cover,
-                          ),
-                    ), */
                   ),
                 )
               else
