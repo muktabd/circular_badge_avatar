@@ -210,6 +210,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                 SizedBox(
                   height: 120,
                   child: NetworkImageBadgeAvatar(
+                    needImagePickerIcon: false,
                     imageString: selectedImagePath3,
                     bgColor: Colors.red,
           

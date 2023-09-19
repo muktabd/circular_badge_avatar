@@ -21,6 +21,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
   final XFile? imagePath;
   final String? imageString;
   final double? iconPosition;
+  final bool? needImagePickerIcon;
 
   const NetworkImageBadgeAvatar({
     super.key,
@@ -37,6 +38,7 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
     this.imagePath,
     this.imageString,
     this.iconPosition,
+    this.needImagePickerIcon = true
   });
 
   @override
@@ -123,30 +125,32 @@ class NetworkImageBadgeAvatar extends StatelessWidget {
                             
               /// adjustable iconbutton [image picker icon button]
               /// by default top value set 85.0 based on SizedBox height 120
-              Positioned(
-                top: iconPosition ?? 85.0,
-                right: 0,
-                child: GestureDetector(
-                  onTap: iconOnPressed,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: icongBg ?? Colors.grey.shade200,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.grey,
+              needImagePickerIcon!
+                ? Positioned(
+                  top: iconPosition ?? 85.0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: iconOnPressed,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: icongBg ?? Colors.grey.shade200,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Icon(
-                        icon ?? Icons.edit,
-                        size: radius * 0.2,
-                        color: iconColor ?? Colors.blue.shade800,
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Icon(
+                          icon ?? Icons.edit,
+                          size: radius * 0.2,
+                          color: iconColor ?? Colors.blue.shade800,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
+                )
+                : const SizedBox.shrink(),
               ///
               ///                 
             ],
