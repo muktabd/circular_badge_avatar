@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerDialog extends StatefulWidget {
-  const ImagePickerDialog({Key? key}) : super(key: key);
+class ImagePickerDialogBox extends StatefulWidget {
+  const ImagePickerDialogBox({Key? key}) : super(key: key);
 
   @override
-  State<ImagePickerDialog> createState() => _ImagePickerDialogState();
+  State<ImagePickerDialogBox> createState() => _ImagePickerDialogBoxState();
 }
 
-class _ImagePickerDialogState extends State<ImagePickerDialog> {
+class _ImagePickerDialogBoxState extends State<ImagePickerDialogBox> {
   String? selectedImage;
   VoidCallback? onPressed;
   ImagePicker picker = ImagePicker();
