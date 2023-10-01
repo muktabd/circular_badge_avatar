@@ -14,6 +14,7 @@ class CircularBadgeAvatar extends StatelessWidget {
   final double? circleBorderWidth;
   final double? circleBorderRadius;
   final String? assetImage;
+  final String? circularPlaceholderImage;
   final String? networkPlaceholderImage;
 
   /// [placeholder image] you just pass the asset name.
@@ -45,6 +46,7 @@ class CircularBadgeAvatar extends StatelessWidget {
       this.networkPlaceholderImage,
       this.imagePath,
       this.imageString,
+      this.circularPlaceholderImage,
       this.networkImage,
       this.circleBgColor,
       this.circleBorderColor,
@@ -107,7 +109,7 @@ class CircularBadgeAvatar extends StatelessWidget {
                             : assetImage != null
                                 ? Image.asset(
                                     assetImage ??
-                                        "assets/images/user_placeholder.png",
+                                        "lib/images/user_placeholder.png",
                                     fit: BoxFit.cover,
                                   )
                                 : Center(
@@ -115,7 +117,7 @@ class CircularBadgeAvatar extends StatelessWidget {
                                       centeralText
                                               ?.split(" ")
                                               .firstOrNull
-                                              ?.substring(0, 2) ??
+                                              ?.substring(0, 2).toUpperCase() ??
                                           "AI",
                                       style: TextStyle(
                                         fontSize: centeralTextSize ?? 24.0,
@@ -141,12 +143,12 @@ class CircularBadgeAvatar extends StatelessWidget {
                       circleBorderRadius ?? 90,
                     ),
                     child: FadeInImage.assetNetwork(
-                      placeholder: networkPlaceholderImage ??
-                          "assets/images/user_placeholder.png",
-                      image: networkImage ??
-                          'https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png',
+                    placeholder: circularPlaceholderImage ??
+                        "assets/images/user_placeholder.png",
+                    image: networkImage ??
+                      'https://raw.githubusercontent.com/muktabd/public-images/main/user_placeholder.png',
                       fit: BoxFit.cover,
-                    ),
+                    ),                 
                   ),
                 ),
 
@@ -189,3 +191,4 @@ class CircularBadgeAvatar extends StatelessWidget {
     );
   }
 }
+ 

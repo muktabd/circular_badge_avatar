@@ -2,8 +2,10 @@ import 'dart:developer';
 import 'package:circular_badge_avatar/circular_badge_avatar.dart';
 import 'package:circular_badge_avatar/helper/image_picker_dialog.dart';
 import 'package:circular_badge_avatar/helper/show_snackbar.dart';
+import 'package:circular_badge_avatar/helper/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class ExampleScreen extends StatefulWidget {
   const ExampleScreen({Key? key}) : super(key: key);
 
@@ -33,11 +36,20 @@ class ExampleScreen extends StatefulWidget {
 }
 
 class _ExampleScreenState extends State<ExampleScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
+  //
   String? selectedImagePath1;
   XFile? imageSource1;
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Circular Badge Examples"),
@@ -51,24 +63,36 @@ class _ExampleScreenState extends State<ExampleScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
+                
+                SizedBox(
+                  height: 120,
+                  child: CircularBadgeAvatar(
+                    iconPosition: 0,
+                    centeralText: "Mukta Ahmed",
+                    iconOnTap: (){
+                      Toast.show("Toast is working...?");
+                    },
+                  ),
+                ),
+
+                const SizedBox(height: 20),
 
                 SizedBox(
                   height: 120,
                   child: CircularBadgeAvatar(
-                    ///centeralText: "MUKTA AHMED",
-                    ///needImagePickerIcon: false,
-                    imagePath: imageSource1,
-                    ///imageString: selectedImagePath1,
-                    ///assetImage: "assets/images/asset_image.png",
-                    /// circleBgColor: Colors.red,
+                    // centeralText: "MUKTA AHMED",
+                    // needImagePickerIcon: false,
+                    // imagePath: imageSource1,
+                    // imageString: selectedImagePath1,
+                    // assetImage: "assets/images/asset_image.png",
+                    circleBgColor: Colors.red,
                     circleBorderColor: Colors.red,
-                    /// centeralTextColor: Colors.red,
-                    /// centeralTextSize: 35,
+                    centeralTextColor: Colors.red,
+                    centeralTextSize: 35,
                     circleBorderWidth: 5.0,
                     circleBorderRadius: 90,
-
                     /// you can pass either a text once network image is empty
-                    /// networkImage: "https://cdn.pixabay.com/photo/2023/09/04/06/59/dog-8232158_1280.jpg",
+                    networkImage: "https://cdn.pixabay.com/photo/2023/09/04/06/59/dog-8232158_1280.jpg",
                     //iconPosition: 85.0,
                     iconOnTap: () async {
                       final file = await showDialog<XFile>(
