@@ -11,8 +11,9 @@ A useful flutter package to make a cicular avater with with badge or without bad
 
 ## Getting started
 Just add this in your dependecies 
-
-* *_circular_badge_avatar: ^0.1.1_*
+```dart
+circular_badge_avatar: ^0.1.2
+```
  
 and import the bellow line where you want to use the Widget
 ```dart
@@ -64,45 +65,58 @@ bool needImagePickerIcon;
 To get a clear idea plese have a look in the example folder to `/example`.
 
 ## Sample output
-<img src = "https://github.com/muktabd/circular_badge_avatar/blob/main/assets/gif/example.gif?raw=true" width="350"><img>
+<img src = "https://github.com/muktabd/circular_badge_avatar/blob/main/example/assets/gif/example.gif?raw=true" width="350"><img>
 
 
 ## CircularBadgeAvatar
-This widget allow you to do everything you want to with circular badge avater with Color, Text or using Asset image. 
+This widget allow you to do everything you want to with circular badge avater with Color, Text or using Asset image, network image, firebase image path. 
 
-Here is an example how to use this widget in your code to show the info. You able to customize anything from this widget.
+### Please mouse hover *CircularBadgeAvatar* to see more optional usable perameters you are able to use.
+
+An example of to show info of a image avater with text or asset image. 
 ```dart
     SizedBox(
-        height: 100,
+        height: 110,
         child: CircularBadgeAvatar(
+        iconPosition: 0, /// [adjust your icon position]
+        icon: Icons.info_outline, /// [replace with your favorite icon]
+        // iconSize: 15, /// [resize your icon size]
         centeralText: "Mukta Ahmed",
-        textColor: Colors.white,
-        bgColor: Colors.red,
-        borderColor: Colors.blueGrey,
-        icon: Icons.info,
-            iconOnPressed: () {
-                /// if you want a custom test use this
-                // var snackBar = SnackBar(content: Text('Hello, I am here'));
-                ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                    content: Text('Hello, Your info is here!!'),
-                ),
-                );
-            },
-        ),
+        /// [if you want to use asset image]
+        // assetImage: "assets/images/asset_image.png",
+        iconOnTap: (){
+            showSuccessSnackBar(message: "An example of info circular badge avater", context: context);
+        },
+       ),
     ),
 ```
 
-If you want to use image path 
+If you want to use image path as string use [imageString:] remeber that it will only accept File or XFile path not asset image string. You can use *Firebase* file path diretly here
 ```dart
     ///if you want to pass a asset image [assetImage: pass your asset image]       
-    const SizedBox(
-        height: 100,
-        child: CircularBadgeAvatar(
-            imageString: [your XFile path], // your asset image will be here
+    SizedBox(
+        height: 110,
+        child: CircularBadgeAvatar(                  
+        needImagePickerIcon: true, /// if you decide not to show the picker icon and user are not able to pick any image [needImagePickerIcon: false]
+        imageString: selectedImagePath1, 
+        iconOnTap: () async { 
+            final file = await showDialog<XFile>(
+            context: context,
+                builder: (context) {
+                    return const ImagePickerDialogBox(
+                    // title: Text("Pick your"),
+                    // titleText: "Please choose your media",
+                    );
+                },
+            );          
+            setState(() {                      
+                selectedImagePath1 = file!.path; // e.g: you need to set a path
+            });
+        },  
         ),
     ),
     const SizedBox(height: 20),
+    //
 ```
 
 ## Handle Network Images
@@ -111,16 +125,15 @@ To handle all kind of network image from HTTP or Firebase image path you can vie
 Here is an example how to use this widget when you want it to pick image and view. To use this widget you need to add *image_picker* package.
 ```dart
     SizedBox(
-        height: 100,
+        height: 110,
         child: CircularBadgeAvatar(
-        imagePath: selectedImagePath,
-        iconPosition: 70,
+        imagePath: /// your image path [XFile] e.g: XFile? imageSource;
         networkImage: "https://cdn.pixabay.com/photo/2023/09/04/06/59/dog-8232158_1280.jpg", // replace your http image url
-        iconOnPressed: () async {
+        iconOnTap: () async {
             log("Hello badge");
 
-            // by default we're showing [BottomSheetImagePicker] helper class
-            // if you don't want you can comment out the lines
+            /// by default we're showing [BottomSheetImagePicker] helper class
+            /// if you don't want you can comment out the lines
 
             final file =  await showModalBottomSheet<XFile?>(
             context: context,
@@ -128,8 +141,8 @@ Here is an example how to use this widget when you want it to pick image and vie
                 return const BottomSheetImagePicker();
             });
 
-            // if you want to use image picker dialog then use [ImagePickerDialog] helper class
-            // remove this comment out lines
+            /// if you want to use image picker dialog then use [ImagePickerDialog] helper class
+            /// remove this comment out lines
             
             /* 
                 final file = await showDialog<XFile>(
@@ -140,12 +153,19 @@ Here is an example how to use this widget when you want it to pick image and vie
             */
 
             setState(() {
-            selectedImagePath = file;
+                imageSource = file;
             });
-        },
+            },
         ),
     ),
 ```
+
+Visit pub dot dev:
+
+https://pub.dev/packages/circular_badge_avatar
+
+## Need help?
+IF you're still need help or want to help me to update or add more features do let me know. Ping me mailto:abdullahibnamukta or visit my portfolio
 
 ## Additional information
 For more and help us to improve this package feel to 

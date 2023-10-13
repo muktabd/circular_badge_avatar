@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BottomSheetImagePicker extends StatefulWidget {
-  const BottomSheetImagePicker({Key? key}) : super(key: key);
+  final Widget? title;
+  final String? titleText;
+  final TextStyle? style;
+  const BottomSheetImagePicker({
+    Key? key,
+    this.title,
+    this.titleText,
+    this.style,
+  }) : super(key: key);
 
   @override
   State<BottomSheetImagePicker> createState() => _BottomSheetImagePickerState();
 }
 
 class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
-  String? selectedImage;
-  VoidCallback? onPressed;
   ImagePicker picker = ImagePicker();
 
   @override
@@ -19,6 +25,16 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 14.0, top: 12.0),
+            child: widget.title ?? Text(widget.titleText 
+            ?? "Please choose your media", 
+            style: widget.style ??  const TextStyle(fontSize: 16),
+            ),
+          ),
+        ),
         ListTile(
           leading: const Icon(
             Icons.camera_alt,

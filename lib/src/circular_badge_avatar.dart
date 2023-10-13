@@ -78,10 +78,10 @@ class CircularBadgeAvatar extends StatelessWidget {
             fit: StackFit.expand,
             alignment: Alignment.topLeft,
             children: [
-              if (imagePath != null ||
-                  imageString != null ||
-                  centeralText != null ||
-                  assetImage != null)
+              if (centeralText != null ||
+                  assetImage != null ||
+                  imagePath != null ||
+                  imageString != null)
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -156,7 +156,7 @@ class CircularBadgeAvatar extends StatelessWidget {
               /// by default top value set 85.0 based on SizedBox height 120
               needImagePickerIcon!
                   ? Positioned(
-                      top: iconPosition ?? 85.0,
+                      top: iconPosition ?? 75.0,
                       right: 0,
                       child: GestureDetector(
                         onTap: iconOnTap,
@@ -173,7 +173,7 @@ class CircularBadgeAvatar extends StatelessWidget {
                             padding: const EdgeInsets.all(5.0),
                             child: Icon(
                               icon ?? Icons.edit,
-                              size: iconSize ?? 18.0,
+                              size: iconSize ?? 15.0,
                               color: iconColor ?? Colors.blue.shade800,
                             ),
                           ),

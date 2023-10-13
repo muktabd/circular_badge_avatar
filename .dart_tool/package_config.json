@@ -33,7 +33,7 @@
     },
     {
       "name": "cross_file",
-      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/cross_file-0.3.3+5",
+      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/cross_file-0.3.3+6",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -51,7 +51,7 @@
     },
     {
       "name": "file_selector_macos",
-      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+2",
+      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+3",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -117,7 +117,7 @@
     },
     {
       "name": "image_picker_android",
-      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/image_picker_android-0.8.7+5",
+      "rootUri": "file:///Users/mukta/.pub-cache/hosted/pub.dev/image_picker_android-0.8.8+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -272,7 +272,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-10-01T13:25:50.276280Z",
+  "generated": "2023-10-13T16:50:28.851913Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }

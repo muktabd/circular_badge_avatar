@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:circular_badge_avatar/circular_badge_avatar.dart';
+import 'package:circular_badge_avatar/helper/bottomsheet_image_picker.dart';
 import 'package:circular_badge_avatar/helper/image_picker_dialog.dart';
 import 'package:circular_badge_avatar/helper/show_snackbar.dart';
 import 'package:circular_badge_avatar/helper/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/services.dart' show rootBundle;
+
 
 void main() {
   runApp(const MyApp());
@@ -37,15 +38,12 @@ class ExampleScreen extends StatefulWidget {
 
 class _ExampleScreenState extends State<ExampleScreen> {
 
-  @override
-  void initState() {
-    super.initState();
-
-  }
-
-  //
+  /// [Xfile or Conver XFile into a string]
   String? selectedImagePath1;
   XFile? imageSource1;
+  XFile? imageSource2;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,24 +63,77 @@ class _ExampleScreenState extends State<ExampleScreen> {
                 const SizedBox(height: 20),
                 
                 SizedBox(
-                  height: 120,
+                  height: 110,
                   child: CircularBadgeAvatar(
-                    iconPosition: 0,
+                    iconPosition: 10, // adjust your icon position
+                    icon: Icons.info_outline, // replace with your favorite icon
+                    iconSize: 15, // resize your icon size
                     centeralText: "Mukta Ahmed",
+                    /// [if you want to use asset image]
+                    // assetImage: "assets/images/asset_image.png",
                     iconOnTap: (){
-                      Toast.show("Toast is working...?");
+                      showSuccessSnackBar(message: "An example of info circular badge avater", context: context);
                     },
                   ),
                 ),
-
                 const SizedBox(height: 20),
+                //
 
                 SizedBox(
-                  height: 120,
+                  height: 110,
+                  child: CircularBadgeAvatar(                  
+                    needImagePickerIcon: true, // if you decide not to show the picker icon and user are not able to pick any image [needImagePickerIcon: false]
+                    // it's image as string but actual type if file. So normal asset string will not be used here
+                    // image path from firebase, File, XFile path can be used here
+                    imageString: selectedImagePath1, 
+                    iconOnTap: () async { 
+                      final file = await showDialog<XFile>(
+                        context: context,
+                        builder: (context) {
+                          return const ImagePickerDialogBox(
+                            ///title: Text("Pick your"),
+                            //titleText: "Please choose your media",
+                          );
+                        },
+                      );
+                      setState(() {                      
+                        selectedImagePath1 = file!.path; // e.g: you need to set a path
+                      });
+                    },  
+                  ),
+                ),
+                const SizedBox(height: 20),
+                //
+
+                SizedBox(
+                  height: 110,
+                  child: CircularBadgeAvatar(                  
+                    imagePath: imageSource1, // imagePath only accept XFile
+                    iconOnTap: () async { 
+                      final file = await showModalBottomSheet<XFile>(
+                        context: context,
+                        builder: (context) {
+                          return const BottomSheetImagePicker(
+                            ///title: Text("Pick your"),
+                            //titleText: "Please choose your media",
+                          );
+                        },
+                      );                   
+                      setState(() {                      
+                        imageSource1 = file!; // e.g: you need to set a path
+                      });
+                    },  
+                  ),
+                ),
+                const SizedBox(height: 20),
+                //
+
+                SizedBox(
+                  height: 110,
                   child: CircularBadgeAvatar(
                     // centeralText: "MUKTA AHMED",
                     // needImagePickerIcon: false,
-                    // imagePath: imageSource1,
+                    imagePath: imageSource2,
                     // imageString: selectedImagePath1,
                     // assetImage: "assets/images/asset_image.png",
                     circleBgColor: Colors.red,
@@ -108,8 +159,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
                       if (file != null) {
                         /// [Pick a image first & then convert it as you want]
                         /// [imageSource] is a XFile. So you can send the XFile firectly here. It will autometically viewed in display
-                        imageSource1 = file;
-                        selectedImagePath1 = file.path;
+                        imageSource2 = file;
+                        // selectedImagePath1 = file.path;
                         log("Seding a string => $selectedImagePath1");
                         log("Seding a XFile => ${imageSource1?.path}");
                         if (mounted) {
