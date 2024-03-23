@@ -1,4 +1,9 @@
-# Curren version : 0.1.2
+# Curren version : 0.1.3
+* Image picker version updated
+* Optional perameters are added
+* Null safety updated
+
+## Curren version : 0.1.2
 * Readme updated
 * Optional perameters are added
 * Null safety updated
