@@ -12,7 +12,7 @@ A useful flutter package to make a cicular avater with with badge or without bad
 ## Getting started
 Just add this in your dependecies 
 ```dart
-circular_badge_avatar: ^0.1.2
+circular_badge_avatar: ^0.1.3
 ```
  
 and import the bellow line where you want to use the Widget

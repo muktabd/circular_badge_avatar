@@ -3,14 +3,22 @@ import 'package:image_picker/image_picker.dart';
 
 class BottomSheetImagePicker extends StatefulWidget {
   final Widget? title;
+  final Widget? cameraTitle;
+  final String? cameraTitleText;
+  final Widget? galleryTitle;
+  final String? galleryTitleText;
   final String? titleText;
   final TextStyle? style;
   const BottomSheetImagePicker({
-    Key? key,
+    super.key,
     this.title,
     this.titleText,
+    this.cameraTitle,
+    this.cameraTitleText,
+    this.galleryTitle,
+    this.galleryTitleText,
     this.style,
-  }) : super(key: key);
+  });
 
   @override
   State<BottomSheetImagePicker> createState() => _BottomSheetImagePickerState();
@@ -39,7 +47,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
           leading: const Icon(
             Icons.camera_alt,
           ),
-          title: const Text("Take a picture"),
+          title: widget.cameraTitle ?? Text(widget.cameraTitleText ?? "Take a picture"),
           onTap: () async {
             final XFile? file =
                 await picker.pickImage(source: ImageSource.camera);
@@ -71,7 +79,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
           leading: const Icon(
             Icons.photo,
           ),
-          title: const Text("Choose from gallery"),
+          title: widget.galleryTitle ?? Text(widget.galleryTitleText ?? "Choose from gallery"),
         ),
         TextButton(
           onPressed: () {
