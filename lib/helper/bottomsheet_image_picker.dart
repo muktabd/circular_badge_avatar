@@ -3,11 +3,13 @@ import 'package:image_picker/image_picker.dart';
 
 class BottomSheetImagePicker extends StatefulWidget {
   final Widget? title;
+  final String? titleText;
   final Widget? cameraTitle;
   final String? cameraTitleText;
   final Widget? galleryTitle;
   final String? galleryTitleText;
-  final String? titleText;
+  final Widget? cancel;
+  final String? cancelText;
   final TextStyle? style;
   const BottomSheetImagePicker({
     super.key,
@@ -17,6 +19,8 @@ class BottomSheetImagePicker extends StatefulWidget {
     this.cameraTitleText,
     this.galleryTitle,
     this.galleryTitleText,
+    this.cancel,
+    this.cancelText,
     this.style,
   });
 
@@ -37,10 +41,11 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.only(left: 14.0, top: 12.0),
-            child: widget.title ?? Text(widget.titleText 
-            ?? "Please choose your media", 
-            style: widget.style ??  const TextStyle(fontSize: 16),
-            ),
+            child: widget.title ??
+                Text(
+                  widget.titleText ?? "Please choose your media",
+                  style: widget.style ?? const TextStyle(fontSize: 16),
+                ),
           ),
         ),
         ListTile(
@@ -49,8 +54,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
           ),
           title: widget.cameraTitle ?? Text(widget.cameraTitleText ?? "Take a picture"),
           onTap: () async {
-            final XFile? file =
-                await picker.pickImage(source: ImageSource.camera);
+            final XFile? file = await picker.pickImage(source: ImageSource.camera);
             if (file != null) {
               if (mounted) {
                 Navigator.of(context).pop(file);
@@ -64,8 +68,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
         ),
         ListTile(
           onTap: () async {
-            final XFile? file =
-                await picker.pickImage(source: ImageSource.gallery);
+            final XFile? file = await picker.pickImage(source: ImageSource.gallery);
             if (file != null) {
               if (mounted) {
                 Navigator.of(context).pop(file);
@@ -87,7 +90,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
           },
           child: Container(
             padding: const EdgeInsets.all(14),
-            child: const Text("Cancel"),
+            child: widget.cancel ?? Text(widget.cancelText ?? "Cancel"),
           ),
         ),
       ],

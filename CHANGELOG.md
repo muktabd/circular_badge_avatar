@@ -1,24 +1,30 @@
-# Curren version : 0.1.3
+# Curren version : 0.1.4
+* Image picker version updated
+* Optional perameters are added
+* Null safety updated
+* Flutter version updated
+
+## Curren version : 0.1.3
 * Image picker version updated
 * Optional perameters are added
 * Null safety updated
 
-## Curren version : 0.1.2
+### Curren version : 0.1.2
 * Readme updated
 * Optional perameters are added
 * Null safety updated
 
 
-## V0.1.1
+### V0.1.1
 **Whats new in this version:**
 
 Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100. You're now able to use our buildin image picker method. You can pass the string image url if needed.
 
-## V0.1.0
+### V0.1.0
 **Whats new in this version:**
 
 Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100. You're now able to use our buildin image picker method. You can pass the string image url if needed.
-## V0.0.9
+### V0.0.9
 **Whats new in this version:**
 
 Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100. You're now able to use our buildin image picker method. You can pass the string image url if needed.
@@ -58,7 +64,6 @@ Image picker version updated. The icon for Image Picker now flexible. You can mo
 
 Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100. You're now able to use our buildin image picker method. You can pass the string image url if needed.
 
-## V0.0.1
-**Whats new in this version:**
+### V0.0.1
 
 Image picker version updated. The icon for Image Picker now flexible. You can move it up or down. The value between 0-100. You're now able to use our buildin image picker method. You can pass the string image url if needed.
